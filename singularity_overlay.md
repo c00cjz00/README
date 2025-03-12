@@ -1,4 +1,20 @@
 # 於HPC上, 進行持久化存儲
+## 優勢說明 (超賣機位的概念)
+```
+# 查看原始空間使用量
+/usr/lpp/mmfs/bin/mmlsquota --block-size auto fs01
+> 768.4G (用了768.4GB)
+
+# 建立 使用者購買 50G空間
+singularity overlay create --size 50000 allen
+ls -alth allen
+> -rw-------+ 1 c00cjz00 TRI107122 49G Mar 12 09:43 allen (選是49GB)
+
+# 再次查看原始空間使用量
+/usr/lpp/mmfs/bin/mmlsquota --block-size auto fs01
+> 777.3G (用了768.4GB->777.3G  只增加8.9GB)
+```
+
 
 ## 程式碼
 - 參考 https://pawseysc.github.io/singularity-containers/32-writable-trinity/index.html
