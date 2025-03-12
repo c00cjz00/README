@@ -23,7 +23,7 @@ exit
 ### **1. 建立 Overlay 文件系統**
 ```bash
 export SIZE="200"  # 設定 overlay 檔案的大小（MB）
-export FILE="my_overlay"  # 設定 overlay 檔案的名稱
+export FILE="dark_lia_limit_disk"  # 設定 overlay 檔案的名稱
 singularity overlay create --size $SIZE $FILE  # 建立 overlay
 ```
 這會建立一個大小為 **200MB** 的 `my_overlay` 檔案，這個檔案可用來擴充容器的檔案系統，允許你在裡面存儲資料。
@@ -32,25 +32,24 @@ singularity overlay create --size $SIZE $FILE  # 建立 overlay
 
 ### **2. 掛載 Overlay 並進入容器**
 ```bash
-singularity shell --overlay my_overlay docker://ubuntu:18.04
+singularity shell --overlay dark_lia_limit_disk docker://ubuntu:18.04
 ```
 這會：
 - **啟動 Ubuntu 18.04 容器**（從 Docker Hub 下載）
-- **掛載 `my_overlay` 作為 overlay filesystem**，讓你能在容器內的檔案系統中讀寫
+- **掛載 `dark_lia_limit_disk` 作為 overlay filesystem**，讓你能在容器內的檔案系統中讀寫
 
 ---
 
 ### **3. 在容器內創建檔案**
 ```bash
-Singularity> mkdir /australia  # 創建目錄
-Singularity> cd /australia  # 進入目錄
-Singularity> echo perth > wa  # 在 "wa" 檔案中寫入 "perth"
-Singularity> echo canberra > act  # 在 "act" 檔案中寫入 "canberra"
+Singularity> mkdir /mytwb_紀錄  # 創建目錄
+Singularity> echo "第一筆紀錄" > /mytwb_紀錄/01.record  # 在 "01.record" 檔案中寫入 "第一筆紀錄"
+Singularity> echo "第二筆紀錄" > /mytwb_紀錄/02.record  # 在 "02.record" 檔案中寫入 "第二筆紀錄"
 ```
 這段程式碼：
-- 建立一個名為 `/australia` 的目錄
-- 建立 `wa` 檔案，內容是 `perth`
-- 建立 `act` 檔案，內容是 `canberra`
+- 建立一個名為 `/mytwb_紀錄` 的目錄
+- 建立 `01.record` 檔案，內容是 `第一筆紀錄`
+- 建立 `02.record` 檔案，內容是 `第二筆紀錄`
 
 因為使用了 `overlay`，這些變更會持久存在，即使容器關閉，檔案仍然會保留。
 
@@ -60,7 +59,7 @@ Singularity> echo canberra > act  # 在 "act" 檔案中寫入 "canberra"
 ```bash
 Singularity> exit
 ```
-這會結束 Singularity shell，但 `my_overlay` 內的數據仍然存在。
+這會結束 Singularity shell，但 `dark_lia_limit_disk` 內的數據仍然存在。
 
 ---
 
@@ -72,9 +71,8 @@ Singularity 容器通常是 **唯讀（read-only）**，但有時候你可能需
 
 Overlay 提供了一個簡單的方法來擴展 Singularity 的功能，而不需修改原始映像檔。
 
----
 
 ### **總結**
-這段程式碼使用 `singularity overlay create` 來建立一個持久化的 overlay 檔案系統，並掛載到容器內，使得 `/australia` 目錄及其內容能夠在容器結束後仍被保留。這種方式適合需要存儲數據但又不想修改基礎映像的情境。
+這段程式碼使用 `singularity overlay create` 來建立一個持久化的 overlay 檔案系統，並掛載到容器內，使得 `/mytwb_紀錄` 目錄及其內容能夠在容器結束後仍被保留。這種方式適合需要存儲數據但又不想修改基礎映像的情境。
 
 這樣的做法在 **高效能運算（HPC）環境** 下特別有用，因為它允許使用者在共享的容器環境中管理自己的數據，而不影響其他使用者或原始映像。
