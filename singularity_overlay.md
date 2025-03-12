@@ -8,7 +8,7 @@
 # 建立 使用者購買 50G空間
 singularity overlay create --size 50000 allen
 ls -alth allen
-> -rw-------+ 1 c00cjz00 TRI107122 49G Mar 12 09:43 allen (選是49GB)
+> -rw-------+ 1 c00cjz00 TRI107122 49G Mar 12 09:43 allen (顯示這個檔案有49GB)
 
 # 再次查看原始空間使用量
 /usr/lpp/mmfs/bin/mmlsquota --block-size auto fs01
