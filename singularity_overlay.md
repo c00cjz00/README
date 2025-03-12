@@ -46,7 +46,7 @@ export SIZE="200"  # 設定 overlay 檔案的大小（MB）
 export FILE="dark_lia_limit_disk"  # 設定 overlay 檔案的名稱
 singularity overlay create --size $SIZE $FILE  # 建立 overlay
 ```
-這會建立一個大小為 **200MB** 的 `my_overlay` 檔案，這個檔案可用來擴充容器的檔案系統，允許你在裡面存儲資料。
+這會建立一個大小為 **200MB** 的 `dark_lia_limit_disk` 檔案，這個檔案可用來擴充容器的檔案系統，允許你在裡面存儲資料。
 
 ---
 
