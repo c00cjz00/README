@@ -33,7 +33,7 @@ singularity shell --overlay dark_lia_limit_disk docker://ubuntu:18.04
 mkdir /mytwb_紀錄
 cd /mytwb_紀錄
 echo "第一筆紀錄" > /mytwb_紀錄/01.record
-echo "第一筆紀錄" > /mytwb_紀錄/02.record
+echo "第二筆紀錄" > /mytwb_紀錄/02.record
 
 # 離開後重新掛載overlay後, 資料都在, 但用戶無法取得這個overlay image 
 exit
