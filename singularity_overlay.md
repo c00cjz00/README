@@ -1,7 +1,7 @@
 ## 程式碼
 - 參考 https://pawseysc.github.io/singularity-containers/32-writable-trinity/index.html
 ```
-# 建置200MB的用富專屬空間
+# 建置200MB的使用者專屬空間
 export SIZE="200"
 export FILE="dark_lia_limit_disk"
 singularity overlay create --size $SIZE $FILE
