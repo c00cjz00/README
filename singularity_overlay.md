@@ -7,7 +7,7 @@ export FILE="dark_lia_limit_disk"
 singularity overlay create --size $SIZE $FILE
 
 # 掛載 --overlay (最上層的空間都是你的)
-singularity shell --overlay my_overlay docker://ubuntu:18.04
+singularity shell --overlay dark_lia_limit_disk docker://ubuntu:18.04
 
 # 建置專屬目錄檔案   (最上層的空間都是你的)
 mkdir /mytwb_紀錄
