@@ -1,4 +1,6 @@
 # 於HPC上, 進行持久化存儲
+- https://apptainer.org/user-docs/3.4/persistent_overlays.html
+- 
 ## 優勢說明 
 - 適合於代理多用戶進行計算時, 應用於用戶資料安全與資料獨立隔離
 - 保護每個用戶的儲存空間上限, 並進行空間壓縮最有效利用 (超賣機位的概念)
